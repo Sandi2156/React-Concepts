@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import Accordion from "./components/accordian";
+import faqData from "./data.json";
+export default function App() {
+	console.log(faqData);
+	return (
+		<Accordion>
+			<Accordion.Title>Frequently Asked Questions</Accordion.Title>
+			<Accordion.Frame>
+				{faqData.map((item) => (
+					<Accordion.Item key={item.id}>
+						<Accordion.Header>{item.header}</Accordion.Header>
+						<Accordion.Body>{item.body}</Accordion.Body>
+					</Accordion.Item>
+				))}
+			</Accordion.Frame>
+		</Accordion>
+	);
 }
-
-export default App;
